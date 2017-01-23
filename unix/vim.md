@@ -22,3 +22,11 @@
 
 `za` - toggle folding
 
+### git
+
+* [`:Gstatus`](https://github.com/tpope/vim-fugitive)
+ - `-` - add/reset file
+ - `p` - add/reset `-- patch` 
+* `Gcommit`
+* `Gblame`
+* `Gdiff`
