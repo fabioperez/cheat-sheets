@@ -18,6 +18,13 @@
 
 ## Editing
 
+### movement
+
+#### Python
+
+* `[[` - jump to previous class or function
+* `]]` - jump to next class or function
+
 ### folding
 
 `za` - toggle folding
