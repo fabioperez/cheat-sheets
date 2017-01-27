@@ -50,6 +50,27 @@ TODO
 
 TODO
 
+## list comprehension
+
+```
+# [<operation(var)> for <var> in <list> if <condition>]
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+squared_evens = [x**2 for x in l if x % 2 == 0]
+# [4, 16, 36, 64, 100]
+
+# nested list comprehension
+# [<operation(var)> for <var1> in <list1> for <var2> in <list2> if <conditional>]
+# equivalent to:
+# for <var1> in <list1>:
+#   for <var2> in <list2>:
+#     if <conditional>:
+#       <operation(var)>
+l = [[1,2,3],[4,5,6]]
+[x for sl in l for x in sl]
+# [1, 2, 3, 4, 5, 6]
+
+```
+
 ## References
 
 * https://developers.google.com/edu/python/lists
