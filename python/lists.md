@@ -10,6 +10,12 @@ print(l[0]) # 1
 
 l[1] = 1000
 print(l) # [1, 1000, 3]
+
+# check if a list is empty
+if l:
+  print("Not empty")
+if not l:
+  print("Empty")
 ```
 
 ### for / in
