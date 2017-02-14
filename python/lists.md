@@ -64,6 +64,13 @@ l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 squared_evens = [x**2 for x in l if x % 2 == 0]
 # [4, 16, 36, 64, 100]
 
+# if+else
+# [<operation_true(var)> if <condition> else <operation_false(var)> for <var> in <list>]
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+[x**2 if x % 2 == 0 else x**3 for x in l]
+# [1, 4, 27, 16, 125, 36, 343, 64, 729, 100]   
+ 
+
 # nested list comprehension
 # [<operation(var)> for <var1> in <list1> for <var2> in <list2> if <conditional>]
 # equivalent to:
