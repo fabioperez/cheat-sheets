@@ -61,7 +61,58 @@ TODO
 
 ## slices
 
-TODO
+```
+a = list(range(10))
+# [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+a[:5]
+# [0, 1, 2, 3, 4]
+a[7:]
+# [7, 8, 9]
+a[1:4]
+# [1, 2, 3]
+a[-4:-1]
+[6, 7, 8]
+```
+
+### the result of a slice is a new list
+
+```
+a = list(range(5))
+# [0, 1, 2, 3, 4]
+b = a[2:]
+# [2, 3, 4]
+b[1] = 'a'
+# [2, 'a', 4]
+print(a)
+# [0, 1, 2, 3, 4]
+```
+
+### copy a list
+
+```
+b = a
+b is a # True
+b = a[:]
+b is a # False
+```
+
+# modifying a list without allocating a new list
+
+```
+a = list(range(5))
+# [0, 1, 2, 3, 4]
+b = a
+a = [1, 2, 3]
+b is a # False
+
+a = list(range(5))
+# [0, 1, 2, 3, 4]
+b = a
+a[:] = [1, 2, 3]
+b is a # True
+print(b)
+# [1, 2, 3]
+```
 
 ## list comprehension
 
@@ -88,7 +139,6 @@ l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 l = [[1,2,3],[4,5,6]]
 [x for sl in l for x in sl]
 # [1, 2, 3, 4, 5, 6]
-
 ```
 
 ## References
