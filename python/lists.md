@@ -96,7 +96,7 @@ b = a[:]
 b is a # False
 ```
 
-# modifying a list without allocating a new list
+### modifying a list without allocating a new list
 
 ```
 a = list(range(5))
