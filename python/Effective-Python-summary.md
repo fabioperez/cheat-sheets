@@ -2,7 +2,7 @@
 
 * [Pythonic Thinking](#1-pythonic-thinking)
   - [Item 3: Know the Differences Between `bytes`, `str` and `unicode`](#item-3-know-the-differences-between-bytes-str-and-unicode)
-  - [Item 7: Use List Comprehensions Instead of map and filter]
+  - [Item 7: Use List Comprehensions Instead of map and filter](item-7-use-list-comprehensions-instead-of-map-and-filter)
 
 ## 1. Pythonic Thinking
 
