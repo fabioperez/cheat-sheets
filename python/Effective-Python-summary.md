@@ -1,7 +1,10 @@
 ## Table of Contents
 
-* Pythonic Thinking
-  - [Item 3: Know the Differences Between `bytes`, `str` and `unicode`](#Item-3-Know-the-Differences-Between-bytes-str-and-unicode)
+* [Pythonic Thinking](#1-pythonic-thinking)
+  - [Item 3: Know the Differences Between `bytes`, `str` and `unicode`](#item-3-know-the-differences-between-bytes-str-and-unicode)
+  - [Item 7: Use List Comprehensions Instead of map and filter]
+
+## 1. Pythonic Thinking
 
 ### Item 3: Know the Differences Between `bytes`, `str` and `unicode`
 
@@ -22,3 +25,11 @@
 * In Python 3, UTF-8 is the default encoding when dealing with files handles.
 In Python 2, file operations use binary encoding. To read/write binary data
 to files with Python 3, use the `'rb'`/`'wb'` modes.
+
+### Item 7: Use List Comprehensions Instead of map and filter
+
+* List comprehensions are clearer than `map` and `filter` as they don't require `lambda` expressions.
+
+* List comprehensions can be used for mapping and filtering.
+
+* Dictionaries and sets can also use comprehensions.
