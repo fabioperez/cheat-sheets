@@ -2,7 +2,8 @@
 
 * [Pythonic Thinking](#1-pythonic-thinking)
   - [Item 3: Know the Differences Between `bytes`, `str` and `unicode`](#item-3-know-the-differences-between-bytes-str-and-unicode)
-  - [Item 7: Use List Comprehensions Instead of map and filter](item-7-use-list-comprehensions-instead-of-map-and-filter)
+  - [Item 7: Use List Comprehensions Instead of map and filter](#item-7-use-list-comprehensions-instead-of-map-and-filter)
+  - [Item 8: Avoid More Than Two Expressions in List Comprehensions](#item-8-avoid-more-than-two-expressions-in-list-comprehensions)
 
 ## 1. Pythonic Thinking
 
@@ -33,3 +34,9 @@ to files with Python 3, use the `'rb'`/`'wb'` modes.
 * List comprehensions can be used for mapping and filtering.
 
 * Dictionaries and sets can also use comprehensions.
+
+### Item 8: Avoid More Than Two Expressions in List Comprehensions
+
+* List comprehensions support multiple levels of looping.
+
+* List comprehensions with more than two expressions should be avoided. `if`s and `for`s should be used instead.
