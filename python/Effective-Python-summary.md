@@ -4,6 +4,7 @@
   - [Item 3: Know the Differences Between `bytes`, `str` and `unicode`](#item-3-know-the-differences-between-bytes-str-and-unicode)
   - [Item 7: Use List Comprehensions Instead of map and filter](#item-7-use-list-comprehensions-instead-of-map-and-filter)
   - [Item 8: Avoid More Than Two Expressions in List Comprehensions](#item-8-avoid-more-than-two-expressions-in-list-comprehensions)
+  - [Item 12: Avoid `else` Blocks After `for` and `while` Loops](#item-12-avoid-else-blocks-after-for-and-while-loops)
 
 ## 1. Pythonic Thinking
 
@@ -40,3 +41,9 @@ to files with Python 3, use the `'rb'`/`'wb'` modes.
 * List comprehensions support multiple levels of looping.
 
 * List comprehensions with more than two expressions should be avoided. `if`s and `for`s should be used instead.
+
+### Item 12: Avoid `else` Blocks After `for` and `while` Loops
+
+* It's possible to use `else` after `for` and `while` loops to check if these loops ended. That is, if the loops were not broken.
+
+* This should be avoided as the behavior can be confusing. Instead, write helper functions.
