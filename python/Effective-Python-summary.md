@@ -95,6 +95,6 @@ for i, element in enumerate(some_list):
 ## 2. Function
 
 
-## Item 14: Prefer Exceptions to Returning `None`
+### Item 14: Prefer Exceptions to Returning `None`
 
 * To handle an error inside a function, don't return `None`. Instead, raise exceptions to indicate special situations.
