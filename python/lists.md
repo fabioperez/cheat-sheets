@@ -64,14 +64,23 @@ TODO
 ```
 a = list(range(10))
 # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# first five elements
 a[:5]
 # [0, 1, 2, 3, 4]
+
+# last four elements
+a[-4:]
+# [6, 7, 8, 9]
+
 a[7:]
 # [7, 8, 9]
+
 a[1:4]
 # [1, 2, 3]
+
 a[-4:-1]
-[6, 7, 8]
+# [6, 7, 8]
 ```
 
 ### the result of a slice is a new list
