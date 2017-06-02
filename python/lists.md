@@ -83,6 +83,18 @@ a[-4:-1]
 # [6, 7, 8]
 ```
 
+### slices can have indices that are out of bounds
+
+```
+a = [1, 2, 3, 4]
+
+print(a[:20])
+# [1, 2, 3, 4]
+
+print(a[10:])
+# []
+```
+
 ### the result of a slice is a new list
 
 ```
