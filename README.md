@@ -2,6 +2,7 @@
 
 ## Python
 * [lists](python/lists.md)
+* [generators](python/generators.md)
 * [virtualenv](python/virtualenv.md)
 
 ## Unix
