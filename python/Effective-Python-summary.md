@@ -2,6 +2,7 @@
 
 * [Pythonic Thinking](#1-pythonic-thinking)
   - [Item 1: Know Which Version of Python You're Using](#item-1-know-which-version-of-python-youre-using)
+  - [Item 2: Follow the PEP 8 Style Guide](#item-2-follow-the-pep-8-style-guide)
   - [Item 3: Know the Differences Between `bytes`, `str` and `unicode`](#item-3-know-the-differences-between-bytes-str-and-unicode)
   - [Item 4: Write Helper Functions Instead of Complex Expressions](#item-4-write-helper-functions-instead-of-complex-expressions)
   - [Item 5: Know How to Slice Sequences](#item-5-know-how-to-slice-sequences)
@@ -15,6 +16,7 @@
 * [Functions](#2-functions)
 
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
+  - [Item 16: Consider Generators Instead of Returning Lists](#item-16-consider-generators-instead-of-returning-lists)
 
 ## 1. Pythonic Thinking
 
@@ -26,6 +28,11 @@
   - Inside Python: `import sys; print(sys.version)`
 
 * Prefer Python 3 over Python 2.
+
+
+### Item 2: Follow the PEP 8 Style Guide
+
+* Follow the [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 
 
 ### Item 3: Know the Differences Between `bytes`, `str` and `unicode`
@@ -136,3 +143,8 @@ for i, element in enumerate(some_list):
 ### Item 14: Prefer Exceptions to Returning `None`
 
 * To handle an error inside a function, don't return `None`. Instead, raise exceptions to indicate special situations.
+
+
+### Item 16: Consider Generators Instead of Returning Lists
+
+* When creating a function that returns a large sequence of results, consider using a generator instead of a list.
