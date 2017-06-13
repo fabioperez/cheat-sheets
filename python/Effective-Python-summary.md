@@ -17,6 +17,7 @@
 * [Functions](#2-functions)
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
   - [Item 16: Consider Generators Instead of Returning Lists](#item-16-consider-generators-instead-of-returning-lists)
+  - [Item 20: Use `None` and Docstrings to Specify Dynamic Default Arguments](#item-20-use-none-and-docstrings-to-specify-dynamic-default-arguments)
   
 * [Built-in Modules](#6-built-in-modules)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
@@ -156,6 +157,15 @@ for i, element in enumerate(some_list):
 ### Item 16: Consider Generators Instead of Returning Lists
 
 * When creating a function that returns a large sequence of results, consider using a generator instead of a list.
+
+
+### Item 20: Use `None` and Docstrings to Specify Dynamic Default Arguments
+
+* Default arguments are evaluated only during the function definition when a module is loaded.
+
+* Don't use dynamic values (functions, lists, dicts) as default arguments.
+
+* Instead, use a default value of `None`, and inside the function modify the argument value if it is `None`.
 
 
 ## 6. Built-in Modules
