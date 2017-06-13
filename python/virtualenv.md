@@ -42,6 +42,39 @@ pip install -r requirements.txt
 
 ## Tools
 
+### [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/)
+
+#### Install
+
+1. Run `sudo pip3 install virtualenvwrapper`
+
+2. Add to shell file:
+
+```
+export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+export VIRTUALENVWRAPPER_VIRTUALENV='/usr/bin/pyvenv'
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+```
+
+#### Usage
+
+Create virtual environment:
+
+`mkvirtualenv project_name`
+
+Work on virtual environment:
+
+`workon project_name`
+
+Deactivate:
+
+`deactivate`
+
+Delete:
+
+`rmvirtualenv project_name`
+
 ### [autoenv](https://github.com/kennethreitz/autoenv)
 
 If a directory contains a `.env` file, it will automatically be executed when you `cd` into it.
