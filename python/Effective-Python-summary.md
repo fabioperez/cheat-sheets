@@ -13,6 +13,7 @@
   - [Item 10: Prefer `enumerate` Over `range`](#item-10-prefer-enumerate-over-range)
   - [Item 11: Use `zip` to Process Iterators in Parallel](#item-11-use-zip-to-process-iterators-in-parallel)
   - [Item 12: Avoid `else` Blocks After `for` and `while` Loops](#item-12-avoid-else-blocks-after-for-and-while-loops)
+  - [Item 13: Take Advantage of Each Block in `try`/`except`/`else`/`finally`](#item-13-take-advantage-of-each-block-in-try-except-else-finally)
 
 * [Functions](#2-functions)
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
@@ -145,6 +146,16 @@ for i, element in enumerate(some_list):
 * It's possible to use `else` after `for` and `while` loops to check if these loops ended. That is, if the loops were not broken.
 
 * This should be avoided as the behavior can be confusing. Instead, write helper functions.
+
+
+### Item 13: Take Advantage of Each Block in `try`/`except`/`else`/`finally`
+
+* The `finally` is executed even if an exception is raised.
+
+* When `try` does not raise an exception, the `else` block will run.
+
+* The `else` block ensures that some code won't be accidentally caught by the `except` block.
+
 
 ## 2. Functions
 
