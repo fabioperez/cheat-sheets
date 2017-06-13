@@ -22,6 +22,7 @@
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
 
 * [Collaboration](#7-collaboration)
+  - [Item 49: Write Docstrings for Every Function, Class, and Module](#item-49-write-docstrings-for-every-function-class-and-module)
   - [Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies](#item-53-use-virtual-environments-for-isolated-and-reproducible-dependencies)
 
 
@@ -169,6 +170,19 @@ for i, element in enumerate(some_list):
 
 
 ## 7. Collaboration
+
+### Item 49: Write Docstrings for Every Function, Class, and Module
+
+* Python provides built-in support for attaching documentation to blocks of code. The documentation is available as the program runs with the `__doc__` attribute.
+
+* The `help` built-in function can be used to display the documentation in the interactive interpreter.
+
+* Docstrings can be converted to more readable formats with tools such as Sphinx.
+
+* Write documentation for every module, class and function. Keep them updated. If necessary, use [`doctest`](https://docs.python.org/3/library/doctest.html).
+
+* Try to follow [PEP 257 -- Docstring Conventions](https://www.python.org/dev/peps/pep-0257/).
+
 
 ### Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies
 
