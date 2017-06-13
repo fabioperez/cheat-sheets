@@ -21,6 +21,9 @@
 * [Built-in Modules](#6-built-in-modules)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
 
+* [Collaboration](#7-collaboration)
+  - [Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies](#item-53-use-virtual-environments-for-isolated-and-reproducible-dependencies)
+
 
 ## 1. Pythonic Thinking
 
@@ -163,3 +166,20 @@ for i, element in enumerate(some_list):
 * Use `pip` and `pip3` (Python 3) to install and manage packages from PyPI.
 
 * `pip` is installed by default in Python 3.4.
+
+
+## 7. Collaboration
+
+### Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies
+
+* `pip` installs new packages globally.
+
+* Python can only have a single global version of a module installed.
+
+* `venv` (available in Python 3.4) or `virtualenv` (needs to be installed) can be used to create isolated versions of the Python environment, making environments reproducible.
+
+* When using `venv`, packages are installed locally with `pip`.
+
+* It's possible to dump all requirements of an environment with `pip freeze > requirements.txt`. To install from `requirements.txt`, use `pip install -r requirements.txt`.
+
+* Check [virtualenv.md](virtualenv.md) for more information.
