@@ -13,8 +13,8 @@
   - [Item 10: Prefer `enumerate` Over `range`](#item-10-prefer-enumerate-over-range)
   - [Item 11: Use `zip` to Process Iterators in Parallel](#item-11-use-zip-to-process-iterators-in-parallel)
   - [Item 12: Avoid `else` Blocks After `for` and `while` Loops](#item-12-avoid-else-blocks-after-for-and-while-loops)
-* [Functions](#2-functions)
 
+* [Functions](#2-functions)
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
   - [Item 16: Consider Generators Instead of Returning Lists](#item-16-consider-generators-instead-of-returning-lists)
   
@@ -144,7 +144,7 @@ for i, element in enumerate(some_list):
 
 * This should be avoided as the behavior can be confusing. Instead, write helper functions.
 
-## 2. Function
+## 2. Functions
 
 
 ### Item 14: Prefer Exceptions to Returning `None`
