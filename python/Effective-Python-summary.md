@@ -13,7 +13,7 @@
   - [Item 10: Prefer `enumerate` Over `range`](#item-10-prefer-enumerate-over-range)
   - [Item 11: Use `zip` to Process Iterators in Parallel](#item-11-use-zip-to-process-iterators-in-parallel)
   - [Item 12: Avoid `else` Blocks After `for` and `while` Loops](#item-12-avoid-else-blocks-after-for-and-while-loops)
-  - [Item 13: Take Advantage of Each Block in `try`/`except`/`else`/`finally`](#item-13-take-advantage-of-each-block-in-try-except-else-finally)
+  - [Item 13: Take Advantage of Each Block in `try`/`except`/`else`/`finally`](#item-13-take-advantage-of-each-block-in-tryexceptelsefinally)
 
 * [Functions](#2-functions)
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
@@ -29,6 +29,7 @@
 
 
 ## 1. Pythonic Thinking
+
 
 ### Item 1: Know Which Version of Python You're Using
 
@@ -181,6 +182,7 @@ for i, element in enumerate(some_list):
 
 ## 6. Built-in Modules
 
+
 ### Item 48: Know Where to Find Community-Built Modules
 
 * Python has a central repository of modules, created and maintained by the community: the Python Package Index - PyPI (https://pypi.python.org/pypi).
@@ -191,6 +193,7 @@ for i, element in enumerate(some_list):
 
 
 ## 7. Collaboration
+
 
 ### Item 49: Write Docstrings for Every Function, Class, and Module
 
