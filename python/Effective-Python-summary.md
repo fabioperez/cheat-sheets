@@ -165,7 +165,7 @@ for i, element in enumerate(some_list):
 
 * Don't use dynamic values (functions, lists, dicts) as default arguments.
 
-* Instead, use a default value of `None`, and inside the function modify the argument value if it is `None`.
+* Instead, use a default value of `None`, and inside the function modify the argument value if it is `None`. Use Docstrings to document default values.
 
 
 ## 6. Built-in Modules
