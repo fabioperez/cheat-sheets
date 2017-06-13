@@ -17,6 +17,10 @@
 
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
   - [Item 16: Consider Generators Instead of Returning Lists](#item-16-consider-generators-instead-of-returning-lists)
+  
+* [Built-in Modules](#6-built-in-modules)
+  - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
+
 
 ## 1. Pythonic Thinking
 
@@ -148,3 +152,14 @@ for i, element in enumerate(some_list):
 ### Item 16: Consider Generators Instead of Returning Lists
 
 * When creating a function that returns a large sequence of results, consider using a generator instead of a list.
+
+
+## 6. Built-in Modules
+
+### Item 48: Know Where to Find Community-Built Modules
+
+* Python has a central repository of modules, created and maintained by the community: the Python Package Index - PyPI (https://pypi.python.org/pypi).
+
+* Use `pip` and `pip3` (Python 3) to install and manage packages from PyPI.
+
+* `pip` is installed by default in Python 3.4.
