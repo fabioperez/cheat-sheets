@@ -37,3 +37,9 @@
 * `Gcommit`
 * `Gblame`
 * `Gdiff`
+
+## Code style
+
+### Python
+
+* `<F8>` - run [flake8](https://github.com/pycqa/flake8/)
