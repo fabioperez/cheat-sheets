@@ -42,4 +42,4 @@
 
 ### Python
 
-* `<F8>` - run [flake8](https://github.com/pycqa/flake8/)
+* `<F7>` - run [flake8](https://github.com/pycqa/flake8/)
