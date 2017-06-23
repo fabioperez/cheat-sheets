@@ -9,6 +9,7 @@
   - `<c-v>` - open in a vertical split
   - `<c-v>` - open in an horizontal split
   - `<c-z>` - mark/unmark multiple files
+  - `<F5>` - refresh file list
   
 ### buffers
 
