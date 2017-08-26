@@ -18,7 +18,10 @@
 * [Functions](#2-functions)
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
   - [Item 16: Consider Generators Instead of Returning Lists](#item-16-consider-generators-instead-of-returning-lists)
+  - [Item 18: Reduce Visual Noise with Variable Positional Arguments](#item-18-reduce-visual-noise-with-variable-positional-arguments)
+  - [Item 19: Provide Optional Behavior with Keyword Arguments](#item-19-provide-optional-behavior-with-keyword-arguments)
   - [Item 20: Use `None` and Docstrings to Specify Dynamic Default Arguments](#item-20-use-none-and-docstrings-to-specify-dynamic-default-arguments)
+  - [Item 21: Enforce Clarity With Keyword-Only Arguments](#item-21-enforce-clarity-with-keyword-only-arguments)
   
 * [Built-in Modules](#6-built-in-modules)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
@@ -171,6 +174,40 @@ for i, element in enumerate(some_list):
 * When creating a function that returns a large sequence of results, consider using a generator instead of a list.
 
 
+### Item 18: Reduce Visual Noise with Variable Positional Arguments
+
+* Python functions can have arbitrary positional arguments. To do so, use  `*args` as an argument to a function.
+
+* Lists and tuples can be unpacked with the `*` operator.
+
+* Using the `*` operator with generators can be hazardous, as the entire generator will be consumed before calling the function.
+
+* Adding new positional parameters to functions with `*args` will require a change in every place that calls the function.
+
+
+### Item 19: Provide Optional Behavior with Keyword Arguments
+
+* Arguments can be passed by position or by keyword.
+
+* Positional arguments must be specified before keyword arguments.
+
+* Keyword arguments improve code readability.
+
+* Some arguments can have a default value. Arguments that have a default value are optional.
+    ```
+    def func(a, b, c=20):
+       print(a, b, c)
+
+    func(1, 2)
+    # 1 2 20
+
+    func(1)
+    # TypeError: func() missing 1 required positional argument: 'b'
+    ```
+     
+* If an existing function is to be modified, use keyword arguments so you don't have to rewrite the existing calls to this functions.
+
+
 ### Item 20: Use `None` and Docstrings to Specify Dynamic Default Arguments
 
 * Default arguments are evaluated only during the function definition when a module is loaded.
@@ -178,6 +215,25 @@ for i, element in enumerate(some_list):
 * Don't use dynamic values (functions, lists, dicts) as default arguments.
 
 * Instead, use a default value of `None`, and inside the function modify the argument value if it is `None`. Use Docstrings to document default values.
+
+
+### Item 21: Enforce Clarity With Keyword-Only Arguments
+
+* In Python 3, to enforce the use of keyword-only arguments instead of positional ones, use `*` as the end of positional arguments.
+    ```
+    def some_func(a, b, c, *, d=0, e=1):
+      print(a, b, c, d, e)  
+     
+    some_func(1, 2, 3)
+    # 1 2 3 0 1
+    
+    some_func(1, 2, 3, 4) 
+    # TypeError: some_func() takes 3 positional arguments but 4 were given
+    ``` 
+   
+* Use `**kwargs` as an argument to a function that will receive a variable number of keyword arguments.
+
+* The `**` operator can be used in dictionaries to unpack them to keyword arguments.
 
 
 ## 6. Built-in Modules
