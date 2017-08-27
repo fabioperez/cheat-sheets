@@ -24,6 +24,7 @@
   - [Item 21: Enforce Clarity With Keyword-Only Arguments](#item-21-enforce-clarity-with-keyword-only-arguments)
   
 * [Built-in Modules](#6-built-in-modules)
+  - [Item 47: Use `decimal` When Precision Is Paramount](#item-47-use-decimal-when-precision-is-paramount)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
 
 * [Collaboration](#7-collaboration)
@@ -237,6 +238,11 @@ for i, element in enumerate(some_list):
 
 
 ## 6. Built-in Modules
+
+
+### Item 47: Use `decimal` When Precision Is Paramount
+
+* Python has a built-in module for fast correctly-rounded decimal floating point arithmetic: [`decimal`](https://docs.python.org/3/library/decimal.html). Use it when numerical precision and exact rounding is desired.
 
 
 ### Item 48: Know Where to Find Community-Built Modules
