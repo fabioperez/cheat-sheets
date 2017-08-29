@@ -24,6 +24,7 @@
   - [Item 21: Enforce Clarity With Keyword-Only Arguments](#item-21-enforce-clarity-with-keyword-only-arguments)
   
 * [Built-in Modules](#6-built-in-modules)
+  - [Item 44: Make `pickle` Reliable with `copyreg`](#item-44-make-pickle-reliable-with-copyreg)
   - [Item 47: Use `decimal` When Precision Is Paramount](#item-47-use-decimal-when-precision-is-paramount)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
 
@@ -238,6 +239,14 @@ for i, element in enumerate(some_list):
 
 
 ## 6. Built-in Modules
+
+### Item 44: Make `pickle` Reliable with `copyreg`
+
+* The [`pickle`](https://docs.python.org/3/library/pickle.html) module can be used to serialize/deserialize objects in Python.
+
+* The `pickle` module is unsafe (in constrast, JSON is safe), so a Python program should only unpickle data from a trusted source.
+
+* If you modify a class (e.g., add/remove attributes, rename the class etc.), unpickling a pickle of it may break the code. To prevent this, use [`copyreg`](https://docs.python.org/3/library/copyreg.html) to register pickle support functions.
 
 
 ### Item 47: Use `decimal` When Precision Is Paramount
