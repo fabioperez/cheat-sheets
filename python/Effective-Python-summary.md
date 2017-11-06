@@ -27,6 +27,7 @@
   - [Item 23: Accept Functions for Simple Interface Instead of Classes](#item-23-accept-functions-for-simple-interface-instead-of-classes)
   - [Item 24: Use `@classmethod` Polymorphism to Construct Objects Generically](#item-24-use-classmethod-polymorphism-to-construct-objects-generically)
   - [Item 25: Initialize Parent Classes with `super`](#item-25-initialize-parent-classes-with-super)
+  - [Item 27: Prefer Public Attributes Over Private Ones](#item-27-prefer-public-attributes-over-private-ones)
   
 * [Built-in Modules](#6-built-in-modules)
   - [Item 44: Make `pickle` Reliable with `copyreg`](#item-44-make-pickle-reliable-with-copyreg)
