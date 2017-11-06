@@ -23,6 +23,9 @@
   - [Item 20: Use `None` and Docstrings to Specify Dynamic Default Arguments](#item-20-use-none-and-docstrings-to-specify-dynamic-default-arguments)
   - [Item 21: Enforce Clarity With Keyword-Only Arguments](#item-21-enforce-clarity-with-keyword-only-arguments)
   
+* [Classes and Inheritance](#3-classes-and-inheritance)
+  - [Item 23: Accept Functions for Simple Interface Instead of Classes](#item-23-accept-functions-for-simple-interface-instead-of-classes)
+  
 * [Built-in Modules](#6-built-in-modules)
   - [Item 44: Make `pickle` Reliable with `copyreg`](#item-44-make-pickle-reliable-with-copyreg)
   - [Item 47: Use `decimal` When Precision Is Paramount](#item-47-use-decimal-when-precision-is-paramount)
@@ -237,6 +240,19 @@ for i, element in enumerate(some_list):
 
 * The `**` operator can be used in dictionaries to unpack them to keyword arguments.
 
+
+## 3. Classes and Inheritance
+
+### Item 23: Accept Functions for Simple Interface Instead of Classes
+
+
+* Functions accept functions as arguments (functions are first-class objects).
+
+* Functions can keep state with stateful closures, but they are not very readable.
+
+* The [`__call__`](https://docs.python.org/3/reference/datamodel.html#object.__call__) method allows objects to be called like functions.
+
+* Use classes that implement `__call__` when a function that maintains state is needed.
 
 ## 6. Built-in Modules
 
