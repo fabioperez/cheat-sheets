@@ -27,6 +27,7 @@
   - [Item 23: Accept Functions for Simple Interface Instead of Classes](#item-23-accept-functions-for-simple-interface-instead-of-classes)
   - [Item 24: Use `@classmethod` Polymorphism to Construct Objects Generically](#item-24-use-classmethod-polymorphism-to-construct-objects-generically)
   - [Item 25: Initialize Parent Classes with `super`](#item-25-initialize-parent-classes-with-super)
+  - [Item 26: Use Multiple Inheritance Only for Mix-in Utility Classes](#item-26-use-multiple-inheritance-only-for-mix-in-utility-classes)
   - [Item 27: Prefer Public Attributes Over Private Ones](#item-27-prefer-public-attributes-over-private-ones)
   
 * [Built-in Modules](#6-built-in-modules)
@@ -273,6 +274,17 @@ for i, element in enumerate(some_list):
 * In Python 2, it's necessary to pass the class name and `self` to `super` (e.g. `super(ClassName, self).__init()__`). In Python 3, these arguments aren't needed (`super().__init()__`).
 
 * To see the MRO of a class, run `ClassName.mro()`.
+
+
+### Item 26: Use Multiple Inheritance Only for Mix-in Utility Classes
+
+* Avoid multiple inheritance.
+
+* Use [Mix-ins](https://stackoverflow.com/questions/533631/what-is-a-mixin-and-why-are-they-useful) to provide features to a class.
+
+* Mix-ins can be composed (using multiple inheritance) to extend the classes behaviors.
+
+* Override Mix-in methods in derived classes if necessary.
 
 
 ### Item 27: Prefer Public Attributes Over Private Ones
