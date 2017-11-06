@@ -25,6 +25,8 @@
   
 * [Classes and Inheritance](#3-classes-and-inheritance)
   - [Item 23: Accept Functions for Simple Interface Instead of Classes](#item-23-accept-functions-for-simple-interface-instead-of-classes)
+  - [Item 24: Use `@classmethod` Polymorphism to Construct Objects Generically](#item-24-use-classmethod-polymorphism-to-construct-objects-generically)
+  - [Item 25: Initialize Parent Classes with `super`](#item-25-initialize-parent-classes-with-super)
   
 * [Built-in Modules](#6-built-in-modules)
   - [Item 44: Make `pickle` Reliable with `copyreg`](#item-44-make-pickle-reliable-with-copyreg)
@@ -245,7 +247,6 @@ for i, element in enumerate(some_list):
 
 ### Item 23: Accept Functions for Simple Interface Instead of Classes
 
-
 * Functions accept functions as arguments (functions are first-class objects).
 
 * Functions can keep state with stateful closures, but they are not very readable.
@@ -253,6 +254,36 @@ for i, element in enumerate(some_list):
 * The [`__call__`](https://docs.python.org/3/reference/datamodel.html#object.__call__) method allows objects to be called like functions.
 
 * Use classes that implement `__call__` when a function that maintains state is needed.
+
+
+### Item 24: Use `@classmethod` Polymorphism to Construct Objects Generically
+
+* Python only supports one `__init__` (constructor) per class.
+
+* Use `@classmethod` to define alternative constructors to classes. Class methods receive a class as their first parameter, allowing the construction of new instances. This allows the creation of objects in addition to `__init__`.
+
+
+### Item 25: Initialize Parent Classes with `super`
+
+* It's possible to call superclass constructors with ClassName.__init__(), but this may cause issues such as the diamond problem and confusion with the ordering of the calls.
+
+* Instead, we should use `super().__init()__`. It solves the diamond problem by calling comon superclasses' `__init__`s only once and respecting the MRO (Method Resolution Order) for all superclasses.
+
+* In Python 2, it's necessary to pass the class name and `self` to `super` (e.g. `super(ClassName, self).__init()__`). In Python 3, these arguments aren't needed (`super().__init()__`).
+
+* To see the MRO of a class, run `ClassName.mro()`.
+
+
+### Item 27: Prefer Public Attributes Over Private Ones
+
+* Private attributes are defined by starting them with `__` (e.g. `__private_func()`). Python makes them private by renaming them to `_<ClassName>__<attribute_name>`, so they can be accessed if wanted (this can be checked with `instance.__dict__`).
+
+* Fields starting with `_` are defined as protected by the PEP-8 convention. This means that these fields should be used externally with care.
+
+* It's a good practice to document protected attributes to guide subclasses and instead of restrict they as private.
+
+* Only use private attributes to avoid naming problems.
+
 
 ## 6. Built-in Modules
 
