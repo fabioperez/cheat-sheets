@@ -29,6 +29,7 @@
   - [Item 25: Initialize Parent Classes with `super`](#item-25-initialize-parent-classes-with-super)
   - [Item 26: Use Multiple Inheritance Only for Mix-in Utility Classes](#item-26-use-multiple-inheritance-only-for-mix-in-utility-classes)
   - [Item 27: Prefer Public Attributes Over Private Ones](#item-27-prefer-public-attributes-over-private-ones)
+  - [Item 28: Inherit from `collections.abc` for Custom Container Types](#item-28-inherit-from-collectionsabc-for-custom-container-types)
   
 * [Built-in Modules](#6-built-in-modules)
   - [Item 42: Define Function Decorators with `functools.wraps`](#item-42-define-function-decorators-with-functoolswraps)
@@ -298,6 +299,17 @@ for i, element in enumerate(some_list):
 * It's a good practice to document protected attributes to guide subclasses and instead of restrict they as private.
 
 * Only use private attributes to avoid naming problems.
+
+
+### Item 28: Inherit from `collections.abc` for Custom Container Types
+
+* Sometimes, we want to extend some built-in types (e.g. creating a `list` with additional features). To do so, we can create a class that inherits from the desired type.
+
+* Other times, you don't want to create subclasses of types, but want similar behaviors. For instance, you want to have sequence semantics but for data types that are not lists (e.g. trees). To do so, you can implement some special methods such as [`__getitem__`](https://docs.python.org/3/reference/datamodel.html#object.__getitem__) and [`__len__`](https://docs.python.org/3/reference/datamodel.html#object.__len__).
+
+* To implement custom containers, use "abstract base classes" ([`collections.abc`](https://docs.python.org/3/library/collections.abc.html). This will require that you implement some abstract methods.
+
+* `collections.abc` also provides mixins for your containers.
 
 
 ## 6. Built-in Modules
