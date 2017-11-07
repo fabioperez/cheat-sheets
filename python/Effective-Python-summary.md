@@ -31,6 +31,8 @@
   - [Item 27: Prefer Public Attributes Over Private Ones](#item-27-prefer-public-attributes-over-private-ones)
   
 * [Built-in Modules](#6-built-in-modules)
+  - [Item 42: Define Function Decorators with `functools.wraps`](#item-42-define-function-decorators-with-functoolswraps)
+  - [Item 43: Consider contextlib and `with` Statements for Reusable `try`/`finally` Behavior](#item-43-consider-contextlib-and-with-statements-for-reusable-tryfinally-behavior)
   - [Item 44: Make `pickle` Reliable with `copyreg`](#item-44-make-pickle-reliable-with-copyreg)
   - [Item 47: Use `decimal` When Precision Is Paramount](#item-47-use-decimal-when-precision-is-paramount)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
@@ -299,6 +301,33 @@ for i, element in enumerate(some_list):
 
 
 ## 6. Built-in Modules
+
+
+### Item 42: Define Function Decorators with `functools.wraps`
+
+* Decorators add extra functionality to functions. It's possible to do something everytime -- before and after -- a function is called.
+
+* Use [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps) as a decorator to your own decorators. This will make `help()` and `type()` return the expected results for a decorated function.
+
+
+### Item 43: Consider contextlib and `with` Statements for Reusable `try`/`finally` Behavior
+
+* The [with](https://docs.python.org/3/reference/compound_stmts.html#the-with-statement) statement is used to wrap the execution of a block with methods defined by a [context manager](https://docs.python.org/3/reference/datamodel.html#context-managers).
+
+* The `with` statement is a more convenient way to run a code in a special context (that requires preparation and cleanup) than `try`/`except`/`finally` statements.
+
+* Context managers can be implemented by defining the methods `__enter__` and `__exit__` for a class.
+
+* To implement a context manager for a function without defining a new class, use the [`contextmanager`](https://docs.python.org/3/library/contextlib.html#contextlib.contextmanager) decorator from [`contextlib`](https://docs.python.org/3/library/contextlib.html) (`from contextlib import contextmanager`). This allows the function to be used in `with` statements.
+
+* A `with` statement can have a target, defined as a variable that goes after the `as` in a with statement.
+
+    ```with open('file.txt', 'w') as f:``` 
+
+References:
+* https://stackoverflow.com/questions/3012488/what-is-the-python-with-statement-designed-for
+* https://stackoverflow.com/questions/1984325/explaining-pythons-enter-and-exit
+
 
 ### Item 44: Make `pickle` Reliable with `copyreg`
 
