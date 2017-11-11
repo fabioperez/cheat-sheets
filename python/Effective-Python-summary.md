@@ -24,6 +24,7 @@
   - [Item 21: Enforce Clarity With Keyword-Only Arguments](#item-21-enforce-clarity-with-keyword-only-arguments)
   
 * [Classes and Inheritance](#3-classes-and-inheritance)
+  - [Item 22: Prefer Helper Classes Over Bookkeeping with Dictionaries and Tuples](#item-22-prefer-helper-classes-over-bookkeeping-with-dictionaries-and-tuples)
   - [Item 23: Accept Functions for Simple Interface Instead of Classes](#item-23-accept-functions-for-simple-interface-instead-of-classes)
   - [Item 24: Use `@classmethod` Polymorphism to Construct Objects Generically](#item-24-use-classmethod-polymorphism-to-construct-objects-generically)
   - [Item 25: Initialize Parent Classes with `super`](#item-25-initialize-parent-classes-with-super)
@@ -42,6 +43,9 @@
   - [Item 49: Write Docstrings for Every Function, Class, and Module](#item-49-write-docstrings-for-every-function-class-and-module)
   - [Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies](#item-53-use-virtual-environments-for-isolated-and-reproducible-dependencies)
 
+* [Production](#8-production)
+  - [Item 55: Use repr Strings for Debugging Output](#item-55-use-repr-strings-for-debugging-output)
+  - [Item 57: Consider Interactive Debugging with pdb](#item-57-consider-interactive-debugging-with-pdb)
 
 ## 1. Pythonic Thinking
 
@@ -250,6 +254,13 @@ for i, element in enumerate(some_list):
 
 ## 3. Classes and Inheritance
 
+### Item 22: Prefer Helper Classes Over Bookkeeping with Dictionaries and Tuples
+
+* Dictionarys are good for simple bookkeeping. However, the code can get messy if a more complex bookkeeping is necessary (e.g. dictionaries as values of other dictionary).
+
+*  [`namedtuple`](https://docs.python.org/3/library/collections.html#collections.namedtuple) can be used as a simple data container, but it has some limitations: no default arguments; attributes accessible trough numerical indexes.
+
+
 ### Item 23: Accept Functions for Simple Interface Instead of Classes
 
 * Functions accept functions as arguments (functions are first-class objects).
@@ -393,3 +404,31 @@ References:
 * It's possible to dump all requirements of an environment with `pip freeze > requirements.txt`. To install from `requirements.txt`, use `pip install -r requirements.txt`.
 
 * Check [virtualenv.md](virtualenv.md) for more information.
+
+
+## 8. Production
+
+
+### Item 55: Use repr Strings for Debugging Output
+
+* [`print()`](https://docs.python.org/3/library/functions.html#print) is often used for debugging since it prints the human-readable string version of an object.However, `print()` hides type information, which can be useful sometimes.
+
+* [`repr()`](https://docs.python.org/3/library/functions.html#repr) returns a string that contains a printable representation of an object. These strings can be evaluated as Python code with [`eval()`](https://docs.python.org/3/library/functions.html#eval).
+
+* To have objects compatible with `str()` and `print()`, a class must implement the [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) method.
+
+* To have objects compatible with `repr()`, a class must implement the [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) method.
+
+* To provide the printable representation of an object of a class, implement the [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) method.
+
+* To print the public attributes of an object, use [`__dict__`](https://docs.python.org/3/library/stdtypes.html#object.__dict__).
+
+
+### Item 57: Consider Interactive Debugging with pdb
+
+* To debug a program in Python, use [pdb](https://docs.python.org/3/library/pdb.html).
+
+* The program will stop where you put the following line and it will open the Python shell:
+  ```import pdb; pdb.set_trace()```
+  
+* It's possible to run some debugging commands such as `bt` (traceback); `up` and `down` (move scope along call stack); `step`, `next`, `return`, `continue` to continue with the execution of the program. It's also possible to run new Python commands and modify the state of the program.
