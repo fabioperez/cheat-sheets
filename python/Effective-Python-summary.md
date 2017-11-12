@@ -17,6 +17,7 @@
 
 * [Functions](#2-functions)
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
+  - [Item 15: Know How Closures Interact with Variable Scope](#item-15-know-how-closures-interact-with-variable-scope)
   - [Item 16: Consider Generators Instead of Returning Lists](#item-16-consider-generators-instead-of-returning-lists)
   - [Item 18: Reduce Visual Noise with Variable Positional Arguments](#item-18-reduce-visual-noise-with-variable-positional-arguments)
   - [Item 19: Provide Optional Behavior with Keyword Arguments](#item-19-provide-optional-behavior-with-keyword-arguments)
@@ -183,6 +184,19 @@ for i, element in enumerate(some_list):
 ### Item 14: Prefer Exceptions to Returning `None`
 
 * To handle an error inside a function, don't return `None`. Instead, raise exceptions to indicate special situations.
+
+
+### Item 15: Know How Closures Interact with Variable Scope
+
+* Functions can be nested.
+
+* Functions are [first-class objects](https://stackoverflow.com/questions/245192/what-are-first-class-objects) in Python, so you can pass them as arguments to other functions.
+
+* Nested functions can access local variables from the enclosing scope. If they do that when they are executed outside of this scope, they are called *closures*.
+
+* Closures can't modify variables from the enclosing scope unless you declare them as `nonlocal` (Python 3). Python 2 doesn't support `nonlocal`, so lists -- since they are mutable -- can be used instead.
+
+* `nonlocal` shoud be avoided if the closure behavior starts to get complex. Instead, classes can be used (see Item 23).
 
 
 ### Item 16: Consider Generators Instead of Returning Lists
