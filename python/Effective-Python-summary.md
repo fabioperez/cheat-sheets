@@ -33,6 +33,10 @@
   - [Item 27: Prefer Public Attributes Over Private Ones](#item-27-prefer-public-attributes-over-private-ones)
   - [Item 28: Inherit from `collections.abc` for Custom Container Types](#item-28-inherit-from-collectionsabc-for-custom-container-types)
   
+* [Metaclasses and Attributes](#4-metaclasses-and-attributes)
+  - [Item 29: Use Plain Attributes Instead of Get and Set Methods](#item-29-use-plain-attributes-instead-of-get-and-set-methods)
+  - [Item 30: Consider `@property` Instead of Refactoring Attributes](#item-30-consider-property-instead-of-refactoring-attributes)
+  
 * [Built-in Modules](#6-built-in-modules)
   - [Item 42: Define Function Decorators with `functools.wraps`](#item-42-define-function-decorators-with-functoolswraps)
   - [Item 43: Consider contextlib and `with` Statements for Reusable `try`/`finally` Behavior](#item-43-consider-contextlib-and-with-statements-for-reusable-tryfinally-behavior)
@@ -335,6 +339,27 @@ for i, element in enumerate(some_list):
 * To implement custom containers, use "abstract base classes" ([`collections.abc`](https://docs.python.org/3/library/collections.abc.html). This will require that you implement some abstract methods.
 
 * `collections.abc` also provides mixins for your containers.
+
+
+## 4. Metaclasses and Attributes
+
+
+### Item 29: Use Plain Attributes Instead of Get and Set Methods
+
+* Don't write getters / setters in Python. Instead, define public attributes on `__init__`.
+
+*  Use the `@property` decorator and its corresponding `setter` to add special behavior (type checking, value checking, modifying internal state etc.) to attributes.
+
+*  Avoid weird side effects when using `@property`.
+
+*  Don't use slow / complex behaviors with `@property`.
+
+
+### Item 30: Consider `@property` Instead of Refactoring Attributes
+
+* Extend existing attributes functionality with `@property`.
+
+* Refactor a class when it uses `@property` too much.
 
 
 ## 6. Built-in Modules
