@@ -36,6 +36,7 @@
 * [Metaclasses and Attributes](#4-metaclasses-and-attributes)
   - [Item 29: Use Plain Attributes Instead of Get and Set Methods](#item-29-use-plain-attributes-instead-of-get-and-set-methods)
   - [Item 30: Consider `@property` Instead of Refactoring Attributes](#item-30-consider-property-instead-of-refactoring-attributes)
+  - [Item 31: Use Descriptors for Reusable `@property` Methods](#item-31-use-descriptors-for-reusable-property-methods)
   
 * [Built-in Modules](#6-built-in-modules)
   - [Item 42: Define Function Decorators with `functools.wraps`](#item-42-define-function-decorators-with-functoolswraps)
@@ -360,6 +361,21 @@ for i, element in enumerate(some_list):
 * Extend existing attributes functionality with `@property`.
 
 * Refactor a class when it uses `@property` too much.
+
+
+### Item 31: Use Descriptors for Reusable `@property` Methods
+
+* When you read an attribute of a Python object -- let's say `obj.attr`, Python will lookup the value in the object dictionary (`obj.__dict__['attr']`). If it doesn't found it, it will look in the class (`type(obj).__dict__['attr']) dict, and then it will continue through the base classes of `type(obj)`.
+
+* Objects that have a definition for any of [`__get__()`](https://docs.python.org/3/reference/datamodel.html#object.__get__), [`__set__()`](https://docs.python.org/3/reference/datamodel.html#object.__set__), or [`__delete__()`](https://docs.python.org/3/reference/datamodel.html#object.__delete__) are called [descriptors](https://docs.python.org/3/howto/descriptor.html). These special functions can define additional behavior for when you get, set or delete an object.
+
+* When reading the attribute of an object that has `__get__()` defined, instead of only accessing the value of the attribute in the dict, `__get__()` will be executed: `obj.__dict__['attr'].__get__(obj, type(obj))`. The behaviors for `__set__()` and `__delete__()`.
+
+* Descriptors work like the `@property` decorator, but can be reused.
+
+* If you set a class member as a descriptor class, be careful when using `__get__()`, `__set__()`, and `__delete__()`. It may be necessary to store values in a dictionary where the keys are the instance of the class who has the decorators as class members.
+
+* Use a [`WeakKeyDictionary`](https://docs.python.org/3/library/weakref.html) to keep avoid memory leaks when bookkeeping with descriptors.
 
 
 ## 6. Built-in Modules
