@@ -42,6 +42,7 @@
   - [Item 42: Define Function Decorators with `functools.wraps`](#item-42-define-function-decorators-with-functoolswraps)
   - [Item 43: Consider contextlib and `with` Statements for Reusable `try`/`finally` Behavior](#item-43-consider-contextlib-and-with-statements-for-reusable-tryfinally-behavior)
   - [Item 44: Make `pickle` Reliable with `copyreg`](#item-44-make-pickle-reliable-with-copyreg)
+  - [Item 45: Use `datetime` Instead of `time` for Local Clocks](#item-45-use-datetime-instead-of-time-for-local-clocks)
   - [Item 47: Use `decimal` When Precision Is Paramount](#item-47-use-decimal-when-precision-is-paramount)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
 
@@ -414,6 +415,20 @@ References:
 * The `pickle` module is unsafe (in constrast, JSON is safe), so a Python program should only unpickle data from a trusted source.
 
 * If you modify a class (e.g., add/remove attributes, rename the class etc.), unpickling a pickle of it may break the code. To prevent this, use [`copyreg`](https://docs.python.org/3/library/copyreg.html) to register pickle support functions.
+
+
+### Item 45: Use `datetime` Instead of `time` for Local Clocks
+
+* Use the [`datetime`](https://docs.python.org/3/library/datetime.html) built-in module to operate with time zones.
+
+* `datetime` has more features than [`time`](https://docs.python.org/3/library/time.html).
+
+* `datetime` doesn't have all time zones. To work with alternative time zones, use `pytz` or `pendulum`.
+
+* Always represent and store time in UTC and do time zone conversion as the last step, when necessary.
+
+References
+* https://stackoverflow.com/questions/7479777/difference-between-python-datetime-vs-time-modules
 
 
 ### Item 47: Use `decimal` When Precision Is Paramount
