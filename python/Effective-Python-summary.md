@@ -48,6 +48,7 @@
 
 * [Collaboration](#7-collaboration)
   - [Item 49: Write Docstrings for Every Function, Class, and Module](#item-49-write-docstrings-for-every-function-class-and-module)
+  - [Item 51: Define a Root `Exception` to Insulate Callers from APIs](#item-51-define-a-root-exception-to-insulate-callers-from-apis)
   - [Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies](#item-53-use-virtual-environments-for-isolated-and-reproducible-dependencies)
 
 * [Production](#8-production)
@@ -459,6 +460,19 @@ References
 * Write documentation for every module, class and function. Keep them updated. If necessary, use [`doctest`](https://docs.python.org/3/library/doctest.html).
 
 * Try to follow [PEP 257 -- Docstring Conventions](https://www.python.org/dev/peps/pep-0257/).
+
+
+### Item 51: Define a Root `Exception` to Insulate Callers from APIs
+
+* Python has a builtin hierarchy of exceptions for the language and the standard library.
+
+* For APIs, it's better to define your own hierarchy of `Exception`s instead of using builtin exceptions (e.g. `class MyAPIException(Exception)`).
+
+* Having a root exception in a module makes it easy for API users to catch all exceptions raised by the API.
+
+* If API users catch a root API, they can investigate if they should be catching a more specific exception instead, and thus using the API more correctly.
+
+* If a non-root exception is thrown by the API, there's a bug in its implementation. Root Exceptions make it easier to find these bugs.
 
 
 ### Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies
