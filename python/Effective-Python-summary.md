@@ -55,6 +55,7 @@
   - [Item 55: Use repr Strings for Debugging Output](#item-55-use-repr-strings-for-debugging-output)
   - [Item 56: Test Everything with `unittest`](#item-56-test-everything-with-unittest)
   - [Item 57: Consider Interactive Debugging with pdb](#item-57-consider-interactive-debugging-with-pdb)
+  - [Item 59: Use `tracemalloc` to Understand Memory Usage and Leaks](#item-59-use-tracemalloc-to-understand-memory-usage-and-leaks)
 
 ## 1. Pythonic Thinking
 
@@ -532,3 +533,13 @@ References
   ```import pdb; pdb.set_trace()```
   
 * It's possible to run some debugging commands such as `bt` (traceback); `up` and `down` (move scope along call stack); `step`, `next`, `return`, `continue` to continue with the execution of the program. It's also possible to run new Python commands and modify the state of the program.
+
+### Item 59: Use `tracemalloc` to Understand Memory Usage and Leaks
+
+* CPython uses reference counting and cycle-detection for memory management.
+
+* The [`gc`](https://docs.python.org/3/library/gc.html) module provides an interface to Python's garbage collector.
+
+* `gc.get_objects()` lists every object known to the garbage collector. However, it doesn't tell anything about the allocation of these objects.
+
+* Python 3.4 introduced the [`tracemalloc`](https://docs.python.org/3/library/tracemalloc.html) module, which has the capability of tracing back to the allocation of an object. 
