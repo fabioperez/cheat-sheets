@@ -53,6 +53,7 @@
 
 * [Production](#8-production)
   - [Item 55: Use repr Strings for Debugging Output](#item-55-use-repr-strings-for-debugging-output)
+  - [Item 56: Test Everything with `unittest`](#item-56-test-everything-with-unittest)
   - [Item 57: Consider Interactive Debugging with pdb](#item-57-consider-interactive-debugging-with-pdb)
 
 ## 1. Pythonic Thinking
@@ -506,6 +507,21 @@ References
 * To provide the printable representation of an object of a class, implement the [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) method.
 
 * To print the public attributes of an object, use [`__dict__`](https://docs.python.org/3/library/stdtypes.html#object.__dict__).
+
+
+### Item 56: Test Everything with `unittest`
+
+* Use the [`unittest`](https://docs.python.org/3/library/unittest.html) builtin module to create unit tests.
+
+* Tests can be defined by inheriting from [`TestCase`](https://docs.python.org/3/library/unittest.html#unittest.TestCase).
+
+* To define an unit test, create a method inside the class with its name starting with `test`.
+
+* Write unit tests AND integration tests.
+
+* [`setUp`](https://docs.python.org/3/library/unittest.html#unittest.TestCase.setUp), and [`tearDown`](https://docs.python.org/3/library/unittest.html#unittest.TestCase.tearDown) may be used to provide behaviors before and after all tests from a test class run.
+
+* Python 3 has a builtin module to create mock objects for testing: [`unittest.mock`](https://docs.python.org/3/library/unittest.mock.html).
 
 
 ### Item 57: Consider Interactive Debugging with pdb
