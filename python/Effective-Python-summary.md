@@ -43,6 +43,7 @@
   - [Item 43: Consider contextlib and `with` Statements for Reusable `try`/`finally` Behavior](#item-43-consider-contextlib-and-with-statements-for-reusable-tryfinally-behavior)
   - [Item 44: Make `pickle` Reliable with `copyreg`](#item-44-make-pickle-reliable-with-copyreg)
   - [Item 45: Use `datetime` Instead of `time` for Local Clocks](#item-45-use-datetime-instead-of-time-for-local-clocks)
+  - [Item 46: Use Built-in Algorithms and Data Structures](#item-46-use-built-in-algorithms-and-data-structures)
   - [Item 47: Use `decimal` When Precision Is Paramount](#item-47-use-decimal-when-precision-is-paramount)
   - [Item 48: Know Where to Find Community-Built Modules](#item-48-know-where-to-find-community-built-modules)
 
@@ -432,6 +433,15 @@ References:
 
 References
 * https://stackoverflow.com/questions/7479777/difference-between-python-datetime-vs-time-modules
+
+
+### Item 46: Use Built-in Algorithms and Data Structures
+
+* Python has several algorithms and data structures already implemented as built-in modules.
+
+* They are well-maintained and tested, so it's better to use them instead of implementing from scratch (unless you want to create optimized versions, or for practicing).
+
+* Some examples are: [OrderedDict](https://docs.python.org/3/library/collections.html#collections.OrderedDict), [Double-Ended Queue (deque)](https://docs.python.org/3/library/collections.html#collections.deque), [defaultdict](https://docs.python.org/3/library/collections.html#collections.defaultdict), [Heap Queue (heapq)](https://docs.python.org/3/library/heapq.html), [bisect](https://docs.python.org/3/library/bisect.html), and [itertools](https://docs.python.org/3/library/itertools.html).
 
 
 ### Item 47: Use `decimal` When Precision Is Paramount
