@@ -52,6 +52,7 @@
   - [Item 49: Write Docstrings for Every Function, Class, and Module](#item-49-write-docstrings-for-every-function-class-and-module)
   - [Item 50: Use Packages to Organize Modules and Provide Stable APIs](#item-50-use-packages-to-organize-modules-and-provide-stable-apis)
   - [Item 51: Define a Root `Exception` to Insulate Callers from APIs](#item-51-define-a-root-exception-to-insulate-callers-from-apis)
+  - [Item 52: Know How to Break Circular Dependencies](#item-52-know-how-to-break-circular-dependencies)
   - [Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies](#item-53-use-virtual-environments-for-isolated-and-reproducible-dependencies)
 
 * [Production](#8-production)
@@ -542,6 +543,34 @@ from package_b.utils import func1 as func1_b
 * If API users catch a root API, they can investigate if they should be catching a more specific exception instead, and thus using the API more correctly.
 
 * If a non-root exception is thrown by the API, there's a bug in its implementation. Root Exceptions make it easier to find these bugs.
+
+
+### Item 52: Know How to Break Circular Dependencies
+
+* When a module is imported, Python will search in the following order:
+    1. Searches for the module in locations from `sys.path`.
+    2. Loads the code from the module and ensures it compiles.
+    3. Creates a corresponding empty module object.
+    4. Inserts the module into `sys.modules`.
+    5. Run the code in the module object to define its contents.
+
+* Circular dependencies may occur. Example: In file `foo.py`, you `import bar`, and in file `bar.py` you `import foo`. This will throw an `AttributeError`.
+
+* One solution to circular dependencies is to add imports in the middle of a source code. However, this goes against PEP-8.
+
+* A second solution is to avoid running code inside modules. Only define functions, classes, and constants. Then, you define a configure function that will be called after every import. Example:
+
+    ```
+    import foo
+    import bar
+
+    foo.configure()
+    bar.configure()
+    ```
+
+* The third and simplest solution is to do **dynamic imports**, that is, imports inside functions. However, this should be avoided since the overhead of running imports inside functions can make the code slow when used in loops.
+
+* The best solution is to refactor mutual dependencies into a separated module.
 
 
 ### Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies
