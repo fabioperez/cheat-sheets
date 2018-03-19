@@ -50,6 +50,7 @@
 
 * [Collaboration](#7-collaboration)
   - [Item 49: Write Docstrings for Every Function, Class, and Module](#item-49-write-docstrings-for-every-function-class-and-module)
+  - [Item 50: Use Packages to Organize Modules and Provide Stable APIs](#item-50-use-packages-to-organize-modules-and-provide-stable-apis)
   - [Item 51: Define a Root `Exception` to Insulate Callers from APIs](#item-51-define-a-root-exception-to-insulate-callers-from-apis)
   - [Item 53: Use Virtual Environments for Isolated and Reproducible Dependencies](#item-53-use-virtual-environments-for-isolated-and-reproducible-dependencies)
 
@@ -496,6 +497,38 @@ References
 * Write documentation for every module, class and function. Keep them updated. If necessary, use [`doctest`](https://docs.python.org/3/library/doctest.html).
 
 * Try to follow [PEP 257 -- Docstring Conventions](https://www.python.org/dev/peps/pep-0257/).
+
+
+### Item 50: Use Packages to Organize Modules and Provide Stable APIs
+
+* Packages are defined by adding an `__init__.py` file in a directory.
+
+* Packages are modules that contain other modules.
+
+* A module is a single file, whereas a package is a collection of modules in an hierarchy.
+
+* [PEP 420](https://www.python.org/dev/peps/pep-0420/) introduces Implicit Namespace Packages.
+
+* The first use of packages is to help divide your modules into separated namespaces.
+
+* Packages can be aliased:
+
+```
+from package_a.utils import func1
+from package_b.utils import func1 as func1_b
+```
+
+* The second use of packages is to provide stable APIs.
+
+* The default behaviour of `from foo import *` is to load every symbol that doesn't start with `_`.
+
+* Python can limit APIs by using the `__all__` special attribute. `__all__` is a list of every name that will be accessible in the public API (`from foo import *`).
+
+* Avoid `from foo import *`: 
+  * `import *` hides source names for new readers of the code.
+  * `import *` overwrites conflicting names.
+
+* Instead, import the top-level module, and use it as a prefix (e.g. `import foo; foo.func`).
 
 
 ### Item 51: Define a Root `Exception` to Insulate Callers from APIs
