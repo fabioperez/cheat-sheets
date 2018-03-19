@@ -514,10 +514,10 @@ References
 
 * Packages can be aliased:
 
-```
-from package_a.utils import func1
-from package_b.utils import func1 as func1_b
-```
+    ```
+    from package_a.utils import func1
+    from package_b.utils import func1 as func1_b
+    ```
 
 * The second use of packages is to provide stable APIs.
 
