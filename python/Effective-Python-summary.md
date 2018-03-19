@@ -19,6 +19,7 @@
   - [Item 14: Prefer Exceptions to Returning `None`](#item-14-prefer-exceptions-to-returning-none)
   - [Item 15: Know How Closures Interact with Variable Scope](#item-15-know-how-closures-interact-with-variable-scope)
   - [Item 16: Consider Generators Instead of Returning Lists](#item-16-consider-generators-instead-of-returning-lists)
+  - [Item 17: Be Defensive When Iterating Over Arguments](#item-17-be-defensive-when-iterating-over-arguments)
   - [Item 18: Reduce Visual Noise with Variable Positional Arguments](#item-18-reduce-visual-noise-with-variable-positional-arguments)
   - [Item 19: Provide Optional Behavior with Keyword Arguments](#item-19-provide-optional-behavior-with-keyword-arguments)
   - [Item 20: Use `None` and Docstrings to Specify Dynamic Default Arguments](#item-20-use-none-and-docstrings-to-specify-dynamic-default-arguments)
@@ -212,6 +213,29 @@ for i, element in enumerate(some_list):
 ### Item 16: Consider Generators Instead of Returning Lists
 
 * When creating a function that returns a large sequence of results, consider using a generator instead of a list.
+
+
+
+### Item 17: Be Defensive When Iterating Over Arguments
+
+* An iterator produces its results a single time only.
+
+* When an iterator does not have more items to be iterated, it will produce a [`StopIteration`](https://docs.python.org/3/library/exceptions.html#StopIteration) exception on the next [`next`](https://docs.python.org/3/library/functions.html#next) call.
+
+* No errors are produced when an exhausted iterator is iterated with `for`.
+
+* One solution is making a copy of the iterator by calling it as an argument to list(). However, this will consume the entire iterator, which may be inefficient and cause memory errors.
+
+* A better alternative is to provide a new container class implementing the [iterator protocol](https://docs.python.org/3/library/stdtypes.html#iterator-types).
+
+#### Iterator vs iterable
+
+> An **iterable** is an object that has an `__iter__` method which returns an **iterator**, or which defines a `__getitem__` method that can take sequential indexes starting from zero (and raises an `IndexError` when the indexes are no longer valid). So an *iterable* is an object that you can get an iterator from.
+> An **iterator** is an object with a [`next`](https://docs.python.org/2/library/stdtypes.html#iterator.next) (Python 2) or [`__next__`](https://docs.python.org/3/library/stdtypes.html#iterator.__next__) (Python 3) method.
+> Whenever you use a `for` loop, or `map`, or a list comprehension etc. in Python, the next method is called automatically to get each item from the **iterator**, thus going through the process of **iteration**.
+> [Source](https://stackoverflow.com/questions/9884132/what-exactly-are-pythons-iterator-iterable-and-iteration-protocols)
+
+Example: [lists are iterables, but not iterators](https://stackoverflow.com/questions/13054057/confused-with-python-lists-are-they-or-are-they-not-iterators).
 
 
 ### Item 18: Reduce Visual Noise with Variable Positional Arguments
