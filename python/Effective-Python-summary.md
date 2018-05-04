@@ -380,7 +380,7 @@ Example: [lists are iterables, but not iterators](https://stackoverflow.com/ques
 
 * Don't write getters / setters in Python. Instead, define public attributes on `__init__`.
 
-*  Use the `@property` decorator and its corresponding `setter` to add special behavior (type checking, value checking, modifying internal state etc.) to attributes.
+*  Use the [`@property`](https://docs.python.org/3/library/functions.html#property) decorator and its corresponding `setter` to add special behavior (type checking, value checking, modifying internal state etc.) to attributes.
 
 *  Avoid weird side effects when using `@property`.
 
@@ -396,7 +396,7 @@ Example: [lists are iterables, but not iterators](https://stackoverflow.com/ques
 
 ### Item 31: Use Descriptors for Reusable `@property` Methods
 
-* When you read an attribute of a Python object -- let's say `obj.attr`, Python will lookup the value in the object dictionary (`obj.__dict__['attr']`). If it doesn't found it, it will look in the class (`type(obj).__dict__['attr']) dict, and then it will continue through the base classes of `type(obj)`.
+* When you read an attribute of a Python object -- let's say `obj.attr`, Python will lookup the value in the object dictionary (`obj.__dict__['attr']`). If it doesn't found it, it will look in the class (`type(obj).__dict__['attr']`) dict, and then it will continue through the base classes of `type(obj)`.
 
 * Objects that have a definition for any of [`__get__()`](https://docs.python.org/3/reference/datamodel.html#object.__get__), [`__set__()`](https://docs.python.org/3/reference/datamodel.html#object.__set__), or [`__delete__()`](https://docs.python.org/3/reference/datamodel.html#object.__delete__) are called [descriptors](https://docs.python.org/3/howto/descriptor.html). These special functions can define additional behavior for when you get, set or delete an object.
 
