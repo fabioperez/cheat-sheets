@@ -38,7 +38,7 @@
   - [Item 29: Use Plain Attributes Instead of Get and Set Methods](#item-29-use-plain-attributes-instead-of-get-and-set-methods)
   - [Item 30: Consider `@property` Instead of Refactoring Attributes](#item-30-consider-property-instead-of-refactoring-attributes)
   - [Item 31: Use Descriptors for Reusable `@property` Methods](#item-31-use-descriptors-for-reusable-property-methods)
-  - [Item 32: Use `__getattr__`, `__getattribute__`, and `__setattr__` for Lazy Attributes](#item-32-use-getattr-getattribute-and-setattr-for-lazy-attributes)
+  - [Item 32: Use `__getattr__`, `__getattribute__`, and `__setattr__` for Lazy Attributes](#item-32-use-__getattr__-__getattribute__-and-__setattr__-for-lazy-attributes)
   - [Item 33: Validate Subclasses with Metaclasses](#item-33-validate-subclasses-with-metaclasses)
   - [Item 34: Register Class Existence with Metaclasses](#item-34-register-class-existence-with-metaclasses)
   - [Item 35: Annotate Class Attributes with Metaclasses](#item-35-annotate-class-attributes-with-metaclasses)
