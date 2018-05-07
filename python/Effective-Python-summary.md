@@ -38,6 +38,10 @@
   - [Item 29: Use Plain Attributes Instead of Get and Set Methods](#item-29-use-plain-attributes-instead-of-get-and-set-methods)
   - [Item 30: Consider `@property` Instead of Refactoring Attributes](#item-30-consider-property-instead-of-refactoring-attributes)
   - [Item 31: Use Descriptors for Reusable `@property` Methods](#item-31-use-descriptors-for-reusable-property-methods)
+  - [Item 32: Use `__getattr__`, `__getattribute__`, and `__setattr__` for Lazy Attributes](#item-32-use-getattr-getattribute-and-setattr-for-lazy-attributes)
+  - [Item 33: Validate Subclasses with Metaclasses](#item-33-validate-subclasses-with-metaclasses)
+  - [Item 34: Register Class Existence with Metaclasses](#item-34-register-class-existence-with-metaclasses)
+  - [Item 35: Annotate Class Attributes with Metaclasses](#item-35-annotate-class-attributes-with-metaclasses)
   
 * [Built-in Modules](#6-built-in-modules)
   - [Item 42: Define Function Decorators with `functools.wraps`](#item-42-define-function-decorators-with-functoolswraps)
@@ -407,6 +411,51 @@ Example: [lists are iterables, but not iterators](https://stackoverflow.com/ques
 * If you set a class member as a descriptor class, be careful when using `__get__()`, `__set__()`, and `__delete__()`. It may be necessary to store values in a dictionary where the keys are the instance of the class who has the decorators as class members.
 
 * Use a [`WeakKeyDictionary`](https://docs.python.org/3/library/weakref.html) to keep avoid memory leaks when bookkeeping with descriptors.
+
+
+### Item 32: Use `__getattr__`, `__getattribute__`, and `__setattr__` for Lazy Attributes
+
+* [`__getattr__`](https://docs.python.org/3/reference/datamodel.html#object.__getattr__) is called every  time an attribute can't be found in an object's instance dictionary (that is, the object attributes). It's not called if the attribute exists. More formally, it is called when the default attribute access raises an `AttributeError`.
+
+* [`__getattribute__`](https://docs.python.org/3/reference/datamodel.html#object.__getattribute__) is called every time an attribute is accessed, even if it exists in `__dict__`. `__getattr__` will be called if `__getattribute__` raises `AttributeError` or explicitly calls it.
+
+* [`__setattr__`](https://docs.python.org/3/reference/datamodel.html#object.__setattr__) is called every time an attribute is assigned to an object.
+
+* `__getattr__` can be used for lazy initialization. That is, it can be used to add an attribute on its first access.
+
+* `__getattribute__` is called every time an object's attribute is accessed, even if they exist in the attribute dictionary. It's called by the [`hasattr`](https://docs.python.org/3/library/functions.html#hasattr) and [`getattr`]((https://docs.python.org/3/library/functions.html#getattr)) methods.
+
+* To avoid infinite recursion in `__getattribute__` and `__setattr__`, call these methods from `super()` for subclasses.
+
+* [`setattr`](https://docs.python.org/3/library/functions.html#setattr) adds an attribute to an object. `setattr(x, 'foobar', 123)` is equivalent to `x.foobar = 123`.
+
+* [`getattr`](https://docs.python.org/3/library/functions.html#getattr) gets the value of an attribute. `getattr(x, 'foobar')` is equivalent to `x.foobar`.
+
+
+### Item 33: Validate Subclasses with Metaclasses
+
+* [Metaclasses](https://docs.python.org/3/reference/datamodel.html#metaclasses) are defined by inheriting from `type`.
+
+* Metaclasses are associated with classes by passing the `metaclass` argument to class definitions. Example: `class Foo(metaclass=MetaFoo):`.
+
+* Metaclasses have access to the name of the class, the parent classes, and all class attributes defined in the class's body.
+
+*  Metaclasses can be used to enforce style and behavior in classes.
+
+See also: [What are metaclasses in Python?
+](https://stackoverflow.com/questions/100003/what-are-metaclasses-in-python/6581949)
+
+
+### Item 34: Register Class Existence with Metaclasses
+
+* [`__new__`](https://docs.python.org/3/reference/datamodel.html#object.__new__) is used to create an instance of a class (i.e. an object). [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) is called right after the creation of an instance, and it is used to initialize it.
+
+* Class registration can be automatically performed with metaclasses and the `__new__` method.
+
+
+### Item 35: Annotate Class Attributes with Metaclasses
+
+* Metaclasses can be used to annotate or modify properties after a class is defined, but before it is used.
 
 
 ## 6. Built-in Modules
